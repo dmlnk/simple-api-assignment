@@ -63,7 +63,11 @@ def collect_kw_quotes(number):
   
 
 def get_sentiment(sentence):
-  pass
+  text = {"text" : sentence}
+  response = requests.post(SENTIM_API_LINK,data=json.dumps(text), headers=SENTIM_PARAMS)
+  data = json.loads(response.text)
+
+  return data["result"]["polarity"]
 
 
 def separate_sentiment(quotes):
