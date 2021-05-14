@@ -88,7 +88,19 @@ def separate_sentiment(quotes):
   
 
 def display_result(sentiment_dict):
-  pass
+  for sent_str, dict in sentiment_dict.items():
+    print(sent_str + " sentences count - %d:" % (len(sentiment_dict[sent_str])))
+
+    for sentence, polarity in dict.items():
+      print(sentence + " (polarity - %s)" % (polarity))
+    print()
+
+  if len(sentiment_dict["Negative"]) > 0:
+    print("The most negative quote is - '%s' (polarity - %s)" % (min(sentiment_dict["Negative"].items(), key=lambda x: x[1])))
+
+  if len(sentiment_dict["Positive"]) > 0:
+    print("The most positive quote is - '%s' (polarity - %s)" % (max(sentiment_dict["Positive"].items(), key=lambda x: x[1])))
+
 
 
 if __name__ == "__main__":
