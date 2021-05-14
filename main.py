@@ -44,13 +44,18 @@ def get_user_input():
     print("Wrong min and max quotes number is set. Min must be lower than max!")
     return -1
   
-  number = int(input("Type number of Kanye West's quotes you'd like to pull (from %d to %d inclusive): " % (MIN_QUOTES_NUMBER, MAX_QUOTES_NUMBER)))
-    
-  if not (MIN_QUOTES_NUMBER <= number <= MAX_QUOTES_NUMBER):
-    print("Number must be between %d and %d inclusive" % (MIN_QUOTES_NUMBER, MAX_QUOTES_NUMBER))
-    return -1
+  try:
+    number = int(input("Type number of Kanye West's quotes you'd like to pull (from %d to %d inclusive): " % (MIN_QUOTES_NUMBER, MAX_QUOTES_NUMBER)))
   
-  return number
+    if not (MIN_QUOTES_NUMBER <= number <= MAX_QUOTES_NUMBER):
+      print("Number must be between %d and %d inclusive" % (MIN_QUOTES_NUMBER, MAX_QUOTES_NUMBER))
+      return -1
+    
+    return number
+
+  except:
+    print("Input must be a number.") 
+    return -1
 
 
 def collect_kw_quotes(number):
@@ -105,6 +110,9 @@ def display_result(sentiment_dict):
 
 if __name__ == "__main__":
   number = get_user_input()
+  while number < 0:
+    number = get_user_input()
+    
   quotes = set()
 
   if (number != -1):
