@@ -71,7 +71,20 @@ def get_sentiment(sentence):
 
 
 def separate_sentiment(quotes):
-  pass
+  sentiment_dict = {"Positive": {}, "Negative": {}, "Neutral": {}}
+
+  for quote in quotes:
+    polarity = get_sentiment(quote)
+    if polarity > 0:
+      sentiment_dict["Positive"][quote] = polarity
+
+    elif polarity < 0:
+      sentiment_dict["Negative"][quote] = polarity
+
+    elif polarity == 0:
+      sentiment_dict["Neutral"][quote] = polarity
+
+  return sentiment_dict
   
 
 def display_result(sentiment_dict):
