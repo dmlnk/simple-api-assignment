@@ -121,12 +121,8 @@ if __name__ == "__main__":
     number = get_user_input()
 
   quotes = set()
+  quotes = collect_kw_quotes(number)
+  sentiment_dict = separate_sentiment(quotes)
+  display_result(sentiment_dict)
 
-  if (number != -1):
-    quotes = collect_kw_quotes(number)
-    sentiment_dict = separate_sentiment(quotes)
-    display_result(sentiment_dict)
-  else:
-    print("An error has occured.")
-    sys.exit(-1)
     
