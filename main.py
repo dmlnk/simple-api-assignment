@@ -58,6 +58,8 @@ def get_user_input():
     return -1
 
 
+# uses sets because no duplicates are allowed
+# makes set of quotes
 def collect_kw_quotes(number):
   quotes = set()
   
@@ -67,6 +69,7 @@ def collect_kw_quotes(number):
   return quotes
   
 
+# gets sentence as string and returns polarity as float
 def get_sentiment(sentence):
   text = {"text" : sentence}
   response = requests.post(SENTIM_API_LINK,data=json.dumps(text), headers=SENTIM_PARAMS)
@@ -75,6 +78,8 @@ def get_sentiment(sentence):
   return data["result"]["polarity"]
 
 
+# gets set of quotes and makes dictionary based on whether quote is pos, neg or neu
+# key for this dict is another dict where key is quote and value is its polarity
 def separate_sentiment(quotes):
   sentiment_dict = {"Positive": {}, "Negative": {}, "Neutral": {}}
 
@@ -92,6 +97,7 @@ def separate_sentiment(quotes):
   return sentiment_dict
   
 
+# get dict from function above and prints results
 def display_result(sentiment_dict):
   for sent_str, dict in sentiment_dict.items():
     print(sent_str + " sentences count - %d:" % (len(sentiment_dict[sent_str])))
@@ -110,6 +116,7 @@ def display_result(sentiment_dict):
 
 if __name__ == "__main__":
   number = get_user_input()
+  # tries to get input until is correct
   while number < 0:
     number = get_user_input()
 
