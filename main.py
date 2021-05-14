@@ -40,7 +40,17 @@ def get_kw_quote():
 
 
 def get_user_input():
-  pass
+  if (MIN_QUOTES_NUMBER > MAX_QUOTES_NUMBER):
+    print("Wrong min and max quotes number is set. Min must be lower than max!")
+    return -1
+  
+  number = int(input("Type number of Kanye West's quotes you'd like to pull (from %d to %d inclusive): " % (MIN_QUOTES_NUMBER, MAX_QUOTES_NUMBER)))
+    
+  if not (MIN_QUOTES_NUMBER <= number <= MAX_QUOTES_NUMBER):
+    print("Number must be between %d and %d inclusive" % (MIN_QUOTES_NUMBER, MAX_QUOTES_NUMBER))
+    return -1
+  
+  return number
 
 
 def collect_kw_quotes(number):
