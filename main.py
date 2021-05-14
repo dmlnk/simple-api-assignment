@@ -54,7 +54,12 @@ def get_user_input():
 
 
 def collect_kw_quotes(number):
-  pass
+  quotes = set()
+  
+  while(len(quotes) < number):
+    quotes.add(get_kw_quote())
+    
+  return quotes
   
 
 def get_sentiment(sentence):
