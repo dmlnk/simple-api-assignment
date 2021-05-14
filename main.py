@@ -19,7 +19,7 @@ def get_kw_quote():
   quote_str = data["quote"]
   status = response.status_code
 
-  # basic error checking - there are way more errors tbh:()
+  # basic error checking - there are way more errors tbh:(
   if status == 301:
     print("The URL of the requested resource has been changed permanently.")
     sys.exit(-1)
@@ -112,7 +112,7 @@ if __name__ == "__main__":
   number = get_user_input()
   while number < 0:
     number = get_user_input()
-    
+
   quotes = set()
 
   if (number != -1):
