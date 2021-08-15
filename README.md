@@ -1,4 +1,4 @@
-# API Assigment
+# API assignment
 
 Simple Python-based app which uses [Kanye West's quotes API](https://kanye.rest/) and [SENTIM API](https://sentim-api.herokuapp.com/) to pull some quotes and analyse whether they are positive, negative or neutral. 
 
